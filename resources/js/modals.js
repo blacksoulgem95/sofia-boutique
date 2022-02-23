@@ -1,6 +1,6 @@
 window.openModal = (modalId) => {
-    $('#' + modalId).show(500);
-}
+    $("#" + modalId).show(500);
+};
 window.closeModal = (modalId) => {
-    $('#' + modalId).hide(500);
-}
+    $("#" + modalId).hide(500);
+};

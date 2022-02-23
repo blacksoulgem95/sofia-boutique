@@ -37,6 +37,7 @@ class ProfileController extends Controller
 
         $user->legal_name = $in->legal_name;
         $user->surname = $in->surname;
+        $user->company_name = $in->company_name;
         $user->fiscal_code = $in->fiscal_code;
         $user->vat_number = $in->vat_number;
         $user->sdi_number = $in->sdi_number;

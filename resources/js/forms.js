@@ -1,3 +1,3 @@
 window.submitForm = (formId) => {
-    document.getElementById(formId).submit()
-}
+    document.getElementById(formId).submit();
+};
