@@ -58,7 +58,7 @@ $modalButtons = json_decode(json_encode([
         <div class="mt-4">
             <x-label for="certified_email" :value="__('user.form.certified_email')"/>
 
-            <x-input id="certified_email" class="block mt-1 w-full" type="text" name="sdi_number"
+            <x-input id="certified_email" class="block mt-1 w-full" type="text" name="certified_email"
                      :value="$user->certified_email" placeholder="mybusiness@legalmail.it"/>
         </div>
 
