@@ -26,15 +26,13 @@
         </div>
     </header>
 
+    <x-test-env></x-test-env>
+
     <!-- Page Content -->
     <main>
         {{ $slot }}
     </main>
 </div>
-
-@if(env("APP_TEST") === true)
-    <h1 class="text-2xl text-red-800"> TEST ENVIRONMENT = NO ORDERS WILL BE FULLFILLED = DATA MIGHT BE DELETED </h1>
-@endif
 
 <script src="{{ asset('js/app.js') }}"></script>
 @stack('scripts')

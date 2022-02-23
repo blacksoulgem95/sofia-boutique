@@ -69,7 +69,8 @@ class ProfileController extends Controller
         return redirect(route('profile'));
     }
 
-    public function deleteAddress(Request $request) {
+    public function deleteAddress(Request $request)
+    {
         $address = Address::find($request->address_id);
 
         // fixme check if billing first
@@ -82,7 +83,8 @@ class ProfileController extends Controller
         return abort(403, 'Unauthorized action.');
     }
 
-    public function setAddressAsBilling(Request $request) {
+    public function setAddressAsBilling(Request $request)
+    {
         $address = Address::find($request->address_id);
         $user = User::find(Auth::user()->id);
 

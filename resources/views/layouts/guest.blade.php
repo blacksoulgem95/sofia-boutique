@@ -17,12 +17,10 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+    <x-test-env></x-test-env>
+
+    <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
     </body>
-
-    @if(env("APP_TEST") === true)
-        <h1 class="text-2xl text-red-800"> TEST ENVIRONMENT = NO ORDERS WILL BE FULLFILLED = DATA MIGHT BE DELETED </h1>
-    @endif
 </html>

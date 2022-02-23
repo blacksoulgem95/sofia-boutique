@@ -27,6 +27,8 @@
                 </div>
             </header>
 
+                <x-test-env></x-test-env>
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}
