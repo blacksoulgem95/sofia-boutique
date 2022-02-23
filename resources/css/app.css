@@ -2,11 +2,4 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.btn {
-    @apply inline-flex items-center justify-center px-4 py-2;
-    @apply bg-pink-800 hover:bg-pink-700 active:bg-pink-900;
-    @apply border border-transparent rounded-md focus:outline-none focus:border-pink-900 focus:ring ring-pink-300;
-    @apply font-semibold text-xs text-white uppercase;
-    @apply tracking-widest disabled:opacity-25;
-    @apply transition ease-in-out duration-150;
-}
+@import "./forms";

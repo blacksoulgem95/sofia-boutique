@@ -40,7 +40,7 @@
         </div>
 
         <div class="flex justify-end mt-4">
-            <x-button>{{__('actions.edit')}}</x-button>
+            <x-button onclick="openModal('update_profile_modal')"><i class='fa-solid fa-pencil-alt'></i>&nbsp;{{__('actions.edit')}}</x-button>
         </div>
 
     </x-card>
@@ -141,7 +141,7 @@
         </div>
 
         <div class="flex justify-end mt-4">
-            <x-button>{{__('actions.edit')}}</x-button>
+            <x-button onclick="openModal('update_legal_modal')"><i class='fa-solid fa-pencil-alt'></i>&nbsp;{{__('actions.edit')}}</x-button>
         </div>
 
         <div class="flex flex-col mt-4">
@@ -162,4 +162,6 @@
             </div>
         </div>
     </x-card>
+    <x-profile.update-profile-modal :user="$user" id="update_profile_modal"></x-profile.update-profile-modal>
+    <x-profile.update-legal-modal :user="$user" id="update_legal_modal"></x-profile.update-legal-modal>
 </x-app-layout>
