@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\URL;
 if (App::environment('production')) {
     URL::forceScheme('https');
 }
-4
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
