@@ -8,7 +8,7 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production",
-        "build": "npm run prod && php artisan migrate --seed --force"
+        "build": "npm run prod"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.4.0",

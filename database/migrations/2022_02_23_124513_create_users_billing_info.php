@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('certified_email')->nullable();
 
             $table->unsignedBigInteger('billing_address_id')->nullable();
-            $table->foreign('billing_address_id')->references('id')->on('address');
+            $table->foreign('billing_address_id')->references('id')->on('addresses');
 
         });
     }
