@@ -75,7 +75,7 @@ class ProfileController extends Controller
 
         // fixme check if billing first
 
-        if ($address->user_id === "".Auth::user()->id) {
+        if ("".$address->user_id === "".Auth::user()->id) {
             $address->delete();
             return redirect(route('profile'));
         }
@@ -88,11 +88,13 @@ class ProfileController extends Controller
         $address = Address::find($request->address_id);
         $user = User::find(Auth::user()->id);
 
-        if ($address->user_id === "".$user->id) {
+        if ("".$address->user_id === "".$user->id) {
             $user->billing_address_id = $address->id;
             $user->save();
             return redirect(route('profile'));
         }
+
+        return abort(403, 'Unauthorized action.');
     }
 
     public function updateProfile(Request $request)
