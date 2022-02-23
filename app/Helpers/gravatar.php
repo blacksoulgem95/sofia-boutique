@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 
 if (!function_exists('gravatar')) {
-    function gravatar($size = 250) {
+    function gravatar($size = 250)
+    {
         $md5 = "";
         if (Auth::hasUser()) {
             $md5 = md5(trim(strtolower(Auth::user()->email)));

@@ -14,5 +14,3 @@ return [
         'country' => env('SHIPMENTS_FROM_LINE_COUNTRY')
     ]
 ];
-
-?>
