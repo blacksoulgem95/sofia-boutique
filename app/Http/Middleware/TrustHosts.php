@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Middleware\TrustHosts as Middleware;
+use Illuminate\Http\Request;
 
 class TrustHosts extends Middleware
 {
