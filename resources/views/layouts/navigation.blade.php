@@ -3,6 +3,8 @@
 
 use Illuminate\Support\Facades\Auth;
 
+$user = Auth::user()
+
 ?>
 
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
@@ -28,7 +30,7 @@ use Illuminate\Support\Facades\Auth;
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
 
-                @if (!Auth::hasUser())
+                @if (!isset($user))
                     <a href="{{route('login')}}"
                        class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                         <div>{{__('auth.actions.login')}}</div>
@@ -39,7 +41,7 @@ use Illuminate\Support\Facades\Auth;
                         <x-slot name="trigger">
                             <button
                                 class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div>{{ Auth::user()->name }}</div>
+                                <div>{{ $user->name }}</div>
 
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -98,18 +100,18 @@ use Illuminate\Support\Facades\Auth;
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                @if(Auth::hasUser())
+                @if(isset($user))
                     <x-responsive-nav-link :href="route('profile')">
                         <img src="{{gravatar()}}" alt="avatar" class="float-left w-10 h-10 rounded-full mr-3"/>
-                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                        <div class="font-medium text-base text-gray-800">{{ $user->name }}</div>
+                        <div class="font-medium text-sm text-gray-500">{{ $user->email }}</div>
                     </x-responsive-nav-link>
                 @endif
             </div>
 
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->
-                @if(Auth::hasUser())
+                @if(isset($user))
                     {{--                    <x-responsive-nav-link :href="route('profile')">--}}
                     {{--                        {{__('user.profile')}}--}}
                     {{--                    </x-responsive-nav-link>--}}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,51 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect(view('profile'));
+        return redirect(route('profile'));
+    }
+
+    public function addAddress(Request $request)
+    {
+        $request->validate([
+            'name_line' => ['required'],
+            'line_1' => ['required'],
+            'zip' => ['required'],
+            'city' => ['required'],
+            'state' => ['required'],
+            'country' => ['required'],
+            'phone_number' => ['required'],
+        ]);
+
+        $in = $request->only(['name_line', 'co_line', 'line_1', 'line_2', 'zip', 'city', 'state', 'country', 'phone_number']);
+        $in['user_id'] = Auth::user()->id;
+
+        Address::create($in);
+
+        return redirect(route('profile'));
+    }
+
+    public function deleteAddress(Request $request) {
+        $address = Address::find($request->address_id);
+
+        // fixme check if billing first
+
+        if ($address->user_id === "".Auth::user()->id) {
+            $address->delete();
+            return redirect(route('profile'));
+        }
+
+        return abort(403, 'Unauthorized action.');
+    }
+
+    public function setAddressAsBilling(Request $request) {
+        $address = Address::find($request->address_id);
+        $user = User::find(Auth::user()->id);
+
+        if ($address->user_id === "".$user->id) {
+            $user->billing_address_id = $address->id;
+            $user->save();
+            return redirect(route('profile'));
+        }
     }
 
     public function updateProfile(Request $request)

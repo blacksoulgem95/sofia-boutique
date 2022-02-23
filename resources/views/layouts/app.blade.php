@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
@@ -36,5 +35,8 @@
 @if(env("APP_TEST") === true)
     <h1 class="text-2xl text-red-800"> TEST ENVIRONMENT = NO ORDERS WILL BE FULLFILLED = DATA MIGHT BE DELETED </h1>
 @endif
+
+<script src="{{ asset('js/app.js') }}"></script>
+@stack('scripts')
 </body>
 </html>
