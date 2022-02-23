@@ -19,7 +19,7 @@ return new class () extends Migration {
             $table->double('weight')->nullable();
             $table->bigInteger('amount_in_stock')->default(-1);
 
-            $table->string('category_id');
+            $table->unsignedBigInteger('category_id');
 
             $table->foreign('category_id')->references('id')->on('categories');
         });
