@@ -33,4 +33,8 @@
             </main>
         </div>
     </body>
+
+    @if(env("APP_TEST") === 'true')
+        <h1 class="text-2xl text-red-800"> TEST ENVIRONMENT = NO ORDERS WILL BE FULLFILLED = DATA MIGHT BE DELETED </h1>
+    @endif
 </html>
