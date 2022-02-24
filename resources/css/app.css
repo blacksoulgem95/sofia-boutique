@@ -3,3 +3,43 @@
 @import "tailwindcss/utilities";
 
 @import "./forms";
+@import "./cards";
+
+.sf-dropdown-link {
+    @apply block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+    .bg-white {
+        @apply bg-gray-900 text-gray-50 !important;
+    }
+
+    .border-gray-100 {
+        @apply border-gray-600 !important;
+    }
+
+    .text-gray-800 {
+        @apply text-gray-50 !important;
+    }
+
+    .text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900 {
+        @apply text-gray-100 !important;
+    }
+
+    .bg-gray-100 {
+        @apply bg-gray-600 text-gray-50 !important;
+    }
+
+    .sf-dropdown-link {
+        @apply hover:bg-gray-600 focus:bg-gray-600 !important;
+    }
+
+    .bg-gray-50 {
+        @apply bg-gray-500 text-gray-50 !important;
+    }
+
+    .border-gray-200 {
+        @apply border-gray-900 !important;
+    }
+
+}

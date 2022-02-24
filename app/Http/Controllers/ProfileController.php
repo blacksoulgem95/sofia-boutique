@@ -71,11 +71,16 @@ class ProfileController extends Controller
 
     public function deleteAddress(Request $request)
     {
+        $request->validate([
+           'address_id' => ['required', 'notSetAsBilling:'.Auth::user()->id]
+        ]);
+
         $address = Address::find($request->address_id);
 
         // fixme check if billing first
 
         if ("".$address->user_id === "".Auth::user()->id) {
+
             $address->delete();
             return redirect(route('profile'));
         }

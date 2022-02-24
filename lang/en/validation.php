@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'not_owned' => 'You does not seem to be the owner of the entity you\'re trying to edit.',
     'accepted' => 'The :attribute must be accepted.',
     'accepted_if' => 'The :attribute must be accepted when :other is :value.',
     'active_url' => 'The :attribute is not a valid URL.',

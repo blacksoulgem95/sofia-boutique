@@ -14,5 +14,9 @@ return [
         'state' => 'State / Region',
         'country' => 'Country',
         'phone_number' => 'Phone Number'
+    ],
+    'errors' => [
+        'must_not_be_billing' => "You cannot perform this action on a billing address",
+        'do_not_own' => "You seem not to be the owner of the specified address"
     ]
 ];
