@@ -64,9 +64,10 @@ class User extends Authenticatable
 
     public function hasRole($roleString)
     {
-        foreach($this->roles() as $role) {
-            if (strtoupper($roleString) === strtoupper($role->stlug))
+        foreach ($this->roles() as $role) {
+            if (strtoupper($roleString) === strtoupper($role->stlug)) {
                 return true;
+            }
         }
         return false;
     }
