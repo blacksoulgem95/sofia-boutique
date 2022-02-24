@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\User;
+use App\Rules\NotSetAsBilling;
+use App\Rules\OfUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -71,9 +74,13 @@ class ProfileController extends Controller
 
     public function deleteAddress(Request $request)
     {
-        $request->validate([
-           'address_id' => ['required', 'notSetAsBilling:'.Auth::user()->id]
+        $validator = Validator::make([
+            'address_id' => $request->address_id
+        ], [
+            'address_id' => ['required', new NotSetAsBilling(Auth::user()->id), new OfUser(Address::class, 'user_id')]
         ]);
+
+        $validator->validate();
 
         $address = Address::find($request->address_id);
 
@@ -89,6 +96,14 @@ class ProfileController extends Controller
 
     public function setAddressAsBilling(Request $request)
     {
+        $validator = Validator::make([
+            'address_id' => $request->address_id
+        ], [
+            'address_id' => ['required', new OfUser(Address::class, 'user_id')]
+        ]);
+
+        $validator->validate();
+
         $address = Address::find($request->address_id);
         $user = User::find(Auth::user()->id);
 

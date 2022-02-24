@@ -3,10 +3,9 @@
 namespace App\Rules;
 
 use App\Models\User;
-use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\Rule;
 
-class notSetAsBilling implements Rule, DataAwareRule
+class NotSetAsBilling implements Rule
 {
     private $user_id;
 
@@ -15,9 +14,9 @@ class notSetAsBilling implements Rule, DataAwareRule
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user_id)
     {
-        //
+        $this->user_id = $user_id;
     }
 
     /**
@@ -48,10 +47,4 @@ class notSetAsBilling implements Rule, DataAwareRule
         return trans('address.errors.must_not_be_billing');
     }
 
-    public function setData($data)
-    {
-        dd($data);
-        $this->user_id = $data[0];
-        return $this;
-    }
 }

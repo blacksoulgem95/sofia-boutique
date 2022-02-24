@@ -54,6 +54,9 @@ $modalId = old('modal_id')
             <span>{{__('user.addresses')}}</span>
             <x-button onclick="openModal('add_address_modal')"><i class="fa-solid fa-plus"></i></x-button>
         </h2>
+        @if (old('profile_form') === 'addresses')
+            <x-auth-validation-errors></x-auth-validation-errors>
+        @endif
         <div class="grid grid-cols-1 md:grid-cols-3 gap-1 mt-4">
             @foreach($user->addresses as $address)
                 <div>
@@ -79,6 +82,7 @@ $modalId = old('modal_id')
                         <form class="w-full" method="post" action="{{route('profile.delete_address', $address->id)}}">
                             @csrf
                             @method('DELETE')
+                            <input type="hidden" name="profile_form" value="addresses"/>
                             <x-button class="w-full">
                                 <i class="fa-solid fa-trash"></i>&nbsp;{{__('actions.delete')}}
                             </x-button>
@@ -87,6 +91,7 @@ $modalId = old('modal_id')
                             <form class="w-full" method="post" action="{{route('profile.set_billing', $address->id)}}">
                                 @csrf
                                 @method('PUT')
+                                <input type="hidden" name="profile_form" value="addresses"/>
                                 <x-button class="w-full">
                                     <i class="fa-solid fa-file-invoice"></i>&nbsp;{{__('actions.address.set_billing')}}
                                 </x-button>

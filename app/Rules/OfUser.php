@@ -4,10 +4,11 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
-class OfUser implements Rule, DataAwareRule
+class OfUser implements Rule
 {
-    private $table;
+    private $EntityClass;
     private $columnName;
 
     /**
@@ -15,9 +16,10 @@ class OfUser implements Rule, DataAwareRule
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($EntityClass, $columnName)
     {
-        //
+        $this->EntityClass = $EntityClass;
+        $this->columnName = $columnName;
     }
 
     /**
@@ -29,6 +31,11 @@ class OfUser implements Rule, DataAwareRule
      */
     public function passes($attribute, $value)
     {
+        $id = Auth::user()->id;
+        $entity = $this->EntityClass::find($value);
+        $cn = $this->columnName;
+
+        return id_equals($id, $entity->$cn);
     }
 
     /**
@@ -41,10 +48,4 @@ class OfUser implements Rule, DataAwareRule
         return trans('validation.not_owned');
     }
 
-    public function setData($data)
-    {
-        $this->table = $data[0];
-        $this->columnName = $data[1];
-        return $this;
-    }
 }
