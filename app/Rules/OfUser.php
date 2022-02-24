@@ -47,5 +47,4 @@ class OfUser implements Rule
     {
         return trans('validation.not_owned');
     }
-
 }

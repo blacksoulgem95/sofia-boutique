@@ -46,5 +46,4 @@ class NotSetAsBilling implements Rule
     {
         return trans('address.errors.must_not_be_billing');
     }
-
 }

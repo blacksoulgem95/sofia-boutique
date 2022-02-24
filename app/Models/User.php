@@ -56,4 +56,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Address::class, 'user_id');
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasRole($roleString)
+    {
+        foreach($this->roles() as $role) {
+            if (strtoupper($roleString) === strtoupper($role->stlug))
+                return true;
+        }
+        return false;
+    }
 }
