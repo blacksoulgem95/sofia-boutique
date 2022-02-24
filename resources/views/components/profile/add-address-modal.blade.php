@@ -15,7 +15,9 @@ $modalButtons = json_decode(json_encode([
         @csrf
         <input type="hidden" name="modal_id" value="{{$id}}"/>
 
+        @if (old('modal_id') === $id)
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        @endif
 
         <div class="mt-4">
             <x-label for="name_line" :value="__('address.form.name_line')"/>
