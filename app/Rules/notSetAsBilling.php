@@ -31,7 +31,9 @@ class notSetAsBilling implements Rule, DataAwareRule
     {
         $user = User::find($this->user_id);
 
-        if (!isset($user)) return false;
+        if (!isset($user)) {
+            return false;
+        }
 
         return !id_equals($user->billing_address_id, $value);
     }

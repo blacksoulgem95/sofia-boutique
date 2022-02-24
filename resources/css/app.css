@@ -22,7 +22,11 @@
         @apply text-gray-50 !important;
     }
 
-    .text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900 {
+    .text-gray-500,
+    .text-gray-600,
+    .text-gray-700,
+    .text-gray-800,
+    .text-gray-900 {
         @apply text-gray-100 !important;
     }
 
@@ -41,5 +45,4 @@
     .border-gray-200 {
         @apply border-gray-900 !important;
     }
-
 }

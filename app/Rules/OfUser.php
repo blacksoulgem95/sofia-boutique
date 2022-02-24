@@ -29,7 +29,6 @@ class OfUser implements Rule, DataAwareRule
      */
     public function passes($attribute, $value)
     {
-
     }
 
     /**
@@ -44,9 +43,8 @@ class OfUser implements Rule, DataAwareRule
 
     public function setData($data)
     {
-         $this->table = $data[0];
-         $this->columnName = $data[1];
+        $this->table = $data[0];
+        $this->columnName = $data[1];
         return $this;
-
     }
 }

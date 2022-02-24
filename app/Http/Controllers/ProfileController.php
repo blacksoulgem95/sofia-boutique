@@ -80,7 +80,6 @@ class ProfileController extends Controller
         // fixme check if billing first
 
         if ("".$address->user_id === "".Auth::user()->id) {
-
             $address->delete();
             return redirect(route('profile'));
         }
