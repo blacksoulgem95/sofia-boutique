@@ -3,7 +3,7 @@
 
 use Illuminate\Support\Facades\Auth;
 
-$user = $user
+$user = Auth::user()
 
 ?>
 

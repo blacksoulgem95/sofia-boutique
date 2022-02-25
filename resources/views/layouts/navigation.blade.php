@@ -58,6 +58,12 @@ $user = Auth::user()
                                 {{__('user.profile')}}
                             </x-dropdown-link>
 
+                            @if (Auth::user()->hasRole('ADMIN'))
+                                <x-dropdown-link :href="route('admin.dashboard')">
+                                    {{__('admin.dashboard')}}
+                                </x-dropdown-link>
+                            @endif
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Exceptions\DebugException;
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -59,13 +60,13 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class, 'user_roles');
     }
 
     public function hasRole($roleString)
     {
-        foreach ($this->roles() as $role) {
-            if (strtoupper($roleString) === strtoupper($role->stlug)) {
+        foreach ($this->roles()->get() as $role) {
+            if (strtoupper($roleString) === strtoupper($role->slug)) {
                 return true;
             }
         }
